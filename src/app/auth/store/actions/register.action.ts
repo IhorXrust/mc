@@ -1,11 +1,16 @@
 import { createAction, props } from '@ngrx/store';
+import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
 import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 import { ActionTypes } from '../actionTypes';
 
 export const registerAction = createAction(
   ActionTypes.REGISTER,
-  props<RegisterRequestInterface>()
+  props<{ request: RegisterRequestInterface }>()
 );
 
-export const registerSuccess = createAction(ActionTypes.REGISTER_SUCCESS);
-export const registerFailure = createAction(ActionTypes.REGISTER_FAILURE);
+export const registerSuccessAction = createAction(
+  ActionTypes.REGISTER_SUCCESS,
+  props<{ currentUser: CurrentUserInterface }>()
+);
+
+export const registerFailureAction = createAction(ActionTypes.REGISTER_FAILURE);

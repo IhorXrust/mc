@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.components';
 import { authReducer } from './store/reducers';
 import { AuthServise } from './services/auth.service';
+import { EffectsModule } from '@ngrx/effects';
+import { RegisterEffect } from './store/effests/register.effect';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { AuthServise } from './services/auth.service';
     HttpClientModule,
     AuthRoutingModule,
     StoreModule.forFeature('auth', authReducer),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([RegisterEffect]),
   ],
   declarations: [RegisterComponent, LoginComponent],
   providers: [AuthServise],

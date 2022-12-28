@@ -6,7 +6,11 @@
         <p class="text-xs-center">
           <a [routerLink]="['/login']">Have an account?</a>
         </p>
-        Backend errors are here
+        <mc-backend-errors-msg
+          *ngIf="this.backendErrors$ | async as backendErrors"
+          [backendErrors]="backendErrors"
+        >
+        </mc-backend-errors-msg>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
             <fieldset class="form-group">

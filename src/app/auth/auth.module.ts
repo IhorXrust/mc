@@ -13,6 +13,7 @@ import { AuthServise } from './services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './store/effests/register.effect';
 import { BackendErrorsMsgModule } from '../shared/modules/backendErrorsMsg/backendErrorsMsg.module';
+import { PersistanceService } from '../shared/services/persistance.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,6 @@ import { BackendErrorsMsgModule } from '../shared/modules/backendErrorsMsg/backe
     BackendErrorsMsgModule,
   ],
   declarations: [RegisterComponent, LoginComponent],
-  providers: [AuthServise],
+  providers: [AuthServise, PersistanceService],
 })
 export class AuthModule {}

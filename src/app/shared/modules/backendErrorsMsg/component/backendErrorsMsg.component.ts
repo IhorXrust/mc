@@ -15,7 +15,7 @@ export class BackendErrorsMsgComponent implements OnInit {
 
   ngOnInit(): void {
     Object.entries(this.backendErrorsProps).forEach(([key, value]) => {
-      this.errorMessages.push(key + ' ' + value);
+      this.errorMessages.push(`${key} ${value}`);
     });
   }
 }

@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './store/effests/register.effect';
 import { BackendErrorsMsgModule } from '../shared/modules/backendErrorsMsg/backendErrorsMsg.module';
 import { PersistanceService } from '../shared/services/persistance.service';
+import { LoginEffect } from './store/effests/login.effect';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { PersistanceService } from '../shared/services/persistance.service';
     AuthRoutingModule,
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     BackendErrorsMsgModule,
   ],
   declarations: [RegisterComponent, LoginComponent],

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AuthModule } from './auth/auth.module';
+import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 import { TopBarModule } from './shared/modules/topBar/topBar.module';
 import { AuthIntercepter } from './shared/services/authintercepter.service';
 import { PersistanceService } from './shared/services/persistance.service';
@@ -30,6 +31,7 @@ import { PersistanceService } from './shared/services/persistance.service';
       traceLimit: 75,
     }),
     TopBarModule,
+    GlobalFeedModule,
   ],
   providers: [
     PersistanceService,

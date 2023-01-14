@@ -35,5 +35,10 @@
     </a>
   </div>
 
-  PAGINATION
+  <mc-pagination
+    [total]="feed.articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></mc-pagination>
 </div>

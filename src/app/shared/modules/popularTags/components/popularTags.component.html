@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <p>Popular Tags</p>
+  <div *ngIf="isLoading$ | async; esle: loading">Loading tags...</div>
+
+  <div *ngIf="popularTags$ | async as popularTags" class="tag-list">
+    <a
+      class="tag-default tag-pill"
+      *ngFor="let tag of popularTags"
+      [routerLink]="['/tags', tag]"
+    >
+      {{ tag }}
+    </a>
+  </div>
+
+  <mc-error-message *ngIf="error$ | async as error"></mc-error-message>
+</div>

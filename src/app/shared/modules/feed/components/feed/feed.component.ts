@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 import {
   ActivatedRoute,
   ParamMap,
@@ -23,7 +30,7 @@ import queryString from 'query-string';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnChanges {
   @Input('apiUrl') apiUrlProps!: string;
   isLoading$!: Observable<boolean>;
   error$!: Observable<string | null>;
@@ -44,6 +51,17 @@ export class FeedComponent implements OnInit {
     this.initListeners();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges :>> ', changes);
+
+    const isApiUrlChanged =
+      !changes['apiUrlProps'].firstChange &&
+      changes['apiUrlProps'].currentValue !==
+        changes['apiUrlProps'].previousValue;
+    if (isApiUrlChanged) {
+      this.fetchFeed();
+    }
+  }
   initValues(): void {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
